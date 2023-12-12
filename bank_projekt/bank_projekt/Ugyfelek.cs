@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bank_projekt
+namespace Ugyfelek
 {
-    internal class Ugyfelek
+    public class Ugyfelek
     {
+        
     }
 }
