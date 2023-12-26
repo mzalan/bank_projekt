@@ -16,4 +16,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="adatok.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

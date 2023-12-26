@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Ugyfelek
 {
     public class Ugyfel
@@ -14,9 +15,9 @@ namespace Ugyfelek
         public string CVV { get; private set; }
         public int Egyenleg { get; private set; }
         public string PIN { get; private set; }
-        public string Kartyatipus  { get; private set; }
+        public string Kartyatipus { get; private set; }
 
-        public Ugyfel(string sor)          
+        public Ugyfel(string sor)
         {
             string[] adatok = sor.Split(';');
             Nev = adatok[0];
