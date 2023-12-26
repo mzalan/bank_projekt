@@ -1,16 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\bank_projekt",
-    "\\bank_projekt\\bank_projekt",
-    "\\bank_projekt\\bank_projekt\\bin",
-    "\\bank_projekt\\bank_projekt\\bin\\Debug",
-    "\\bank_projekt\\bank_projekt\\bin\\Release",
-    "\\bank_projekt\\bank_projekt\\bin\\Release\\net6.0",
-    "\\bank_projekt\\bank_projekt\\obj",
-    "\\bank_projekt\\bank_projekt\\obj\\Debug",
-    "\\bank_projekt\\bank_projekt\\obj\\Release"
+    ""
   ],
-  "SelectedNode": "\\bank_projekt\\bank_projekt.sln",
   "PreviewInSolutionExplorer": false
 }

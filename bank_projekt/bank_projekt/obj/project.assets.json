@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Windows\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Windows\\Source\\Repos\\mzalan\\bank_projekt\\bank_projekt\\bank_projekt\\bank_projekt.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Documents\\ajsa iskolai cuccos\\programozas\\ikt\\bank_projekt\\bank_projekt\\bank_projekt\\bank_projekt.csproj",
       "projectName": "bank_projekt",
-      "projectPath": "C:\\Users\\Windows\\Source\\Repos\\mzalan\\bank_projekt\\bank_projekt\\bank_projekt\\bank_projekt.csproj",
-      "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Windows\\Source\\Repos\\mzalan\\bank_projekt\\bank_projekt\\bank_projekt\\obj\\",
+      "projectPath": "C:\\Users\\user\\Documents\\ajsa iskolai cuccos\\programozas\\ikt\\bank_projekt\\bank_projekt\\bank_projekt\\bank_projekt.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Documents\\ajsa iskolai cuccos\\programozas\\ikt\\bank_projekt\\bank_projekt\\bank_projekt\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -56,7 +51,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -65,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

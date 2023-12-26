@@ -9,7 +9,6 @@ namespace Ugyfelek
 {
     public class Ugyfel
     {
-
         public string Nev { get; private set; }
         public DateTime LejaratiDatum { get; private set; }
         public string Kartyaszam { get; private set; }
@@ -29,6 +28,5 @@ namespace Ugyfelek
             PIN = adatok[5];
             Kartyatipus = adatok[6];
         }
-
     }
 }

@@ -20,6 +20,17 @@ namespace Ugyfelek
             }
             sr.Close();
         }
-
+        public static bool CheckPin(string beirtPin, int probalkozasok)
+        {
+            if (beirtPin.Length == 4)
+            {
+                foreach (var ugyfel in ugyfelek)
+                {
+                    if (ugyfel.PIN == beirtPin)
+                        return true;
+                }
+            }
+            return false;
+        }
     }
 }
