@@ -37,6 +37,10 @@ namespace Ugyfelek
             }
             return false;
         }
+        public static List<Ugyfel> GetUgyfelek()
+        {
+            return ugyfelek;
+        }
         public static int ValasztoMenu(List<string> opciok, string cim)
         {
             ShowOpciok(opciok, cim);
@@ -159,11 +163,17 @@ namespace Ugyfelek
             opcMenu.Add("Kész");
             return opcMenu;
         }
-        public static string FrissitEgyenleg(int egyenleg)
+        public static string FrissitEgyenleg(int egyenleg, Ugyfel celUgyfel)
         {
-            bejelentkezettUgyfel.Egyenleg += egyenleg;
+            Ugyfel celSzamla;
+            if (celUgyfel == null)
+                celSzamla = bejelentkezettUgyfel;
+            else
+                celSzamla = celUgyfel;
+            celSzamla.Egyenleg += egyenleg;
+
             FajlIr();
-            return $"Egyenleg: {EzresTagolas(bejelentkezettUgyfel.Egyenleg.ToString())} Ft";
+            return $"Egyenleg: {EzresTagolas(celSzamla.Egyenleg.ToString())} Ft";
         }
     }
 }
