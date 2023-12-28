@@ -1,8 +1,7 @@
 ﻿using Ugyfelek;
 
 Fgvk.FajlOlvas();
-//Ugyfel tesztUgyfel = Fgvk.TesztUgyfel();
-//Fgvk.Penzfelvetel(tesztUgyfel);
+
 string valasztas;
 do
 {
@@ -90,7 +89,40 @@ if (valasztas == "1")
         }
         else if(valasztas2 == "3")
         {
-            Console.WriteLine();
+            List<string> menu = new List<string> {
+                "Befizetés saját számlára",
+                "Befizetés más számlára" };
+            int beker = Fgvk.ValasztoMenu(menu, "Adja meg a befizetési módot: ");
+            Dictionary<int, int> cimletekDb = Fgvk.CimletDbDict();
+            if (beker == 1)
+            {
+                int opcBeker;
+                int osszesen = 0;
+                int bankjegyCount = 0;
+                do
+                {
+                    opcBeker = Fgvk.ValasztoMenu(Fgvk.CreateMenuLista(cimletekDb), "Helyezze be a bankjegyeket (max. 200 db)");
+                    if (opcBeker >= 1 && opcBeker <= 5)
+                    {
+                        int[] cimletek = Fgvk.GetCimletek();
+                        osszesen += cimletek[opcBeker - 1];
+                        bankjegyCount++;
+
+                        try
+                        {
+                            cimletekDb[cimletek[opcBeker - 1]] += 1;
+                        }
+                        catch (Exception KeyNotFoundException)
+                        {
+                            cimletekDb[cimletek[opcBeker - 1]] = 1;
+                        }
+                        if (bankjegyCount == 6)
+                            Fgvk.ShowOpciok(Fgvk.CreateMenuLista(cimletekDb), "Helyezze be a bankjegyeket (max. 200 db)");
+                    }
+                } while (opcBeker != 6 && bankjegyCount != 6);
+                Console.WriteLine($"\nFeltöltött pénzösszeg: {Fgvk.EzresTagolas(osszesen.ToString())} Ft");
+                Console.WriteLine(Fgvk.FrissitEgyenleg(osszesen));
+            }
         }
     }
 }
@@ -98,10 +130,6 @@ if (valasztas == "1")
 if (valasztas == "2")
 {
     
-    //Console.WriteLine("Helyezze be a kártyáját a nyílásba. (Kérjük adja meg a kártya adatait)");
-    //Console.Write("Kártyaszám: ");      string kartyaszam = Console.ReadLine();
-    //Console.Write("Lejárati dátum: ");  DateTime lejaratiDatum = DateTime.Parse(Console.ReadLine());
-    //Console.Write("CVV: ");             string cvv = Console.ReadLine();
 }
 
 

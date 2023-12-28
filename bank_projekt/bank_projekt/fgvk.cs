@@ -10,6 +10,7 @@ namespace Ugyfelek
     {
         private static List<Ugyfel> ugyfelek = new List<Ugyfel>();
         private static Ugyfel bejelentkezettUgyfel;
+        private static int[] cimletek = { 20000, 10000, 5000, 2000, 1000 };
         public static void FajlOlvas()
         {
             StreamReader sr = new StreamReader("adatok.txt");
@@ -38,6 +39,12 @@ namespace Ugyfelek
         }
         public static int ValasztoMenu(List<string> opciok, string cim)
         {
+            ShowOpciok(opciok, cim);
+            Console.Write("Bevitel: ");
+            return int.Parse(Console.ReadLine());
+        }
+        public static void ShowOpciok(List<string> opciok, string cim)
+        {
             Console.Clear();
             Console.WriteLine(cim);
 
@@ -45,8 +52,6 @@ namespace Ugyfelek
             {
                 Console.WriteLine($"{i + 1}. {opciok[i]}");
             }
-            Console.Write("Bevitel: ");
-            return int.Parse(Console.ReadLine());
         }
         public static string CheckOsszeg(int beker)
         {
@@ -60,15 +65,14 @@ namespace Ugyfelek
             FajlIr();
             
             Dictionary<int, int> cimletekDb = new Dictionary<int, int>();
-            int[] cimletek = { 20000, 10000, 5000, 2000, 1000 };
             int maradek = kertMenny;
             do
             {
-                maradek = HelyesCimlet(maradek, cimletek, cimletekDb);
+                maradek = HelyesCimlet(maradek, cimletekDb);
             } while (maradek > 0);
             return Kiiratas(cimletekDb);
         }
-        public static int HelyesCimlet(int maradek, int[] cimletek, Dictionary<int, int> cimletekDb)
+        public static int HelyesCimlet(int maradek, Dictionary<int, int> cimletekDb)
         {
             for (int i = 0; i < cimletek.Length; i++)
             {
@@ -104,8 +108,8 @@ namespace Ugyfelek
                 levagando += currentDir[currentDir.Length - i - 1];
             }
             string fajlUt = currentDir.Replace(ReverseString(levagando), "") + @"\adatok.txt";
+
             List<string> sorok = new List<string> { "nev;lejaratidatum;kartyaszam;cvv;egyenleg;pin;kartyatipus" };
-            
             for (int i = 0; i < ugyfelek.Count; i++)
             {
                 Ugyfel sor = ugyfelek[i];
@@ -132,6 +136,34 @@ namespace Ugyfelek
 
             }
             return tagolt;
+        }
+        public static Dictionary<int, int> CimletDbDict()
+        {
+            Dictionary<int, int> cimletekDb = new Dictionary<int, int>();
+            foreach (var cimlet in cimletek)
+            {
+                cimletekDb.Add(cimlet, 0);
+            }
+            return cimletekDb;
+        }
+        public static int[] GetCimletek()
+        {
+            return cimletek;
+        }
+        public static List<string> CreateMenuLista(Dictionary<int, int> cimletekDb)
+        {
+            List<string> opcMenu = new List<string>();
+            foreach (KeyValuePair<int, int> cimlet in cimletekDb){
+               opcMenu.Add($"{EzresTagolas(cimlet.Key.ToString())} Ft x {cimlet.Value.ToString()}");
+            }
+            opcMenu.Add("Kész");
+            return opcMenu;
+        }
+        public static string FrissitEgyenleg(int egyenleg)
+        {
+            bejelentkezettUgyfel.Egyenleg += egyenleg;
+            FajlIr();
+            return $"Egyenleg: {EzresTagolas(bejelentkezettUgyfel.Egyenleg.ToString())} Ft";
         }
     }
 }
