@@ -29,7 +29,6 @@ C:\Users\Windows\Source\Repos\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\
 C:\Users\Windows\Source\Repos\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.genruntimeconfig.cache
 C:\Users\Windows\Source\Repos\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\main.cs
 C:\Users\Windows\Source\Repos\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\Ugyfelek.cs
-C:\Users\Windows\Source\Repos\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\adatok.txt
 C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\bank_projekt.exe
 C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\main.cs
 C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\Ugyfelek.cs
@@ -48,3 +47,4 @@ C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_pr
 C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.pdb
 C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.genruntimeconfig.cache
 C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\ref\bank_projekt.dll
+C:\Users\Windows\Source\Repos\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\adatok.txt
