@@ -48,3 +48,21 @@ C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_pr
 C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.genruntimeconfig.cache
 C:\Users\user\Documents\ajsa iskolai cuccos\programozas\ikt\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\ref\bank_projekt.dll
 C:\Users\Windows\Source\Repos\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\adatok.txt
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\bank_projekt.exe
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\main.cs
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\Ugyfelek.cs
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\adatok.txt
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\bank_projekt.deps.json
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\bank_projekt.runtimeconfig.json
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\bank_projekt.dll
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\bin\Debug\net6.0\bank_projekt.pdb
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.csproj.AssemblyReference.cache
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.AssemblyInfoInputs.cache
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.AssemblyInfo.cs
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.dll
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\refint\bank_projekt.dll
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.pdb
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\bank_projekt.genruntimeconfig.cache
+C:\Users\user\Documents\mzalan\bank_projekt\bank_projekt\bank_projekt\obj\Debug\net6.0\ref\bank_projekt.dll

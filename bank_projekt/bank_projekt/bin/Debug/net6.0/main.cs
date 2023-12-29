@@ -54,17 +54,30 @@ if (valasztas == "1")
 
             if (valasztas2 == "1")
             {
-                
+
             }
+
             else if (valasztas2 == "2")
             {
                 Penzfelvetel();
                 valasztas2 = BackPrompt();
             }
+
             else if (valasztas2 == "3")
             {
                 Penzbefizetes();
                 valasztas2 = BackPrompt();
+            }
+
+            else if (valasztas2 == "4")
+            {
+                Utalas();
+                valasztas2 = BackPrompt();
+            }
+
+            else if (valasztas2 == "5")
+            {
+                
             }
         }
         while (valasztas2 != "");
@@ -115,22 +128,10 @@ if (valasztas == "1")
         } while (beker > 8 || beker < 1);
     }
     void Penzbefizetes()
-    {
-        List<string> menu = new List<string> {
-                    "Befizetés saját számlára",
-                    "Befizetés más számlára" };
-        int beker = Fgvk.ValasztoMenu(menu, "Adja meg a befizetési módot: ");
+        {
+            BankjegyBeadas("", null);
+        }
     
-            if (beker == 1)
-            {
-                BankjegyBeadas("", null);
-            }
-            else if(beker == 2)
-            {
-                Ugyfel celUgyfel = KartyaAdatok();
-                BankjegyBeadas("Adatok elfogadva!\n", celUgyfel);
-            }
-    }
      Ugyfel KartyaAdatok()
     {
         Console.Clear();
@@ -154,41 +155,50 @@ if (valasztas == "1")
             Console.WriteLine("Nem egyeznek az adatok. Próbálja újra.");
         }
     }
-    void BankjegyBeadas(string message, Ugyfel celUgyfel)
-    {
-        Dictionary<int, int> cimletekDb = Fgvk.CimletDbDict();
-        int opcBeker;
-        int osszesen = 0;
-        int bankjegyCount = 0;
-        do
-        {
-            opcBeker = Fgvk.ValasztoMenu(Fgvk.CreateMenuLista(cimletekDb), $"{message}Helyezze be a bankjegyeket (max. 200 db)");
-            if (opcBeker >= 1 && opcBeker <= 5)
-            {
-                int[] cimletek = Fgvk.GetCimletek();
-                osszesen += cimletek[opcBeker - 1];
-                bankjegyCount++;
-
-                try
-                {
-                    cimletekDb[cimletek[opcBeker - 1]] += 1;
-                }
-                catch (Exception KeyNotFoundException)
-                {
-                    cimletekDb[cimletek[opcBeker - 1]] = 1;
-                }
-                if (bankjegyCount == 200)
-                    Fgvk.ShowOpciok(Fgvk.CreateMenuLista(cimletekDb), $"{message}Helyezze be a bankjegyeket (max. 200 db)");
-            }
-        } while (opcBeker != 6 && bankjegyCount != 200);
-        Console.WriteLine($"\nFeltöltött pénzösszeg: {Fgvk.EzresTagolas(osszesen.ToString())} Ft");
-        Console.WriteLine(Fgvk.FrissitEgyenleg(osszesen, celUgyfel));
-    }
-if (valasztas == "2")
+void BankjegyBeadas(string message, Ugyfel celUgyfel)
 {
-    
+    Dictionary<int, int> cimletekDb = Fgvk.CimletDbDict();
+    int opcBeker;
+    int osszesen = 0;
+    int bankjegyCount = 0;
+    do
+    {
+        opcBeker = Fgvk.ValasztoMenu(Fgvk.CreateMenuLista(cimletekDb), $"{message}Helyezze be a bankjegyeket (max. 200 db)");
+        if (opcBeker >= 1 && opcBeker <= 5)
+        {
+            int[] cimletek = Fgvk.GetCimletek();
+            osszesen += cimletek[opcBeker - 1];
+            bankjegyCount++;
+
+            try
+            {
+                cimletekDb[cimletek[opcBeker - 1]] += 1;
+            }
+            catch (Exception KeyNotFoundException)
+            {
+                cimletekDb[cimletek[opcBeker - 1]] = 1;
+            }
+            if (bankjegyCount == 200)
+                Fgvk.ShowOpciok(Fgvk.CreateMenuLista(cimletekDb), $"{message}Helyezze be a bankjegyeket (max. 200 db)");
+        }
+    } while (opcBeker != 6 && bankjegyCount != 200);
+    Console.WriteLine($"\nFeltöltött pénzösszeg: {Fgvk.EzresTagolas(osszesen.ToString())} Ft");
+    Console.WriteLine(Fgvk.FrissitEgyenleg(osszesen, celUgyfel));
+}
+
+void Utalas()
+    {
+    Ugyfel celUgyfel = KartyaAdatok();
+    BankjegyBeadas("Adatok elfogadva!\n", celUgyfel);
 }
 
 
+if (valasztas == "2")
+{
+    Console.Clear();
 
+    string ujnev;
 
+    Console.Write("Üdvözöljük! Kérjük adja meg a nevét: ");
+    ujnev = Console.ReadLine();
+}
