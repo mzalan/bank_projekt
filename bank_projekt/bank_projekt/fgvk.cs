@@ -60,7 +60,7 @@ namespace Ugyfelek
         public static string CheckOsszeg(int beker)
         {
             if (!(beker % 1000 == 0))   return "Kérjük ezerrel osztható összeget adjon meg.";
-            else if (beker > 150000)   return "Kérjük ne adjon meg 150 ezernél nagyobb összeget.";
+            else if (beker > 150000)   return "Kérjük ne adjon meg 150 ezer forintnál nagyobb összeget.";
             return "";
         }
         public static string KeszpenzCalc(int kertMenny)
@@ -175,5 +175,8 @@ namespace Ugyfelek
             FajlIr();
             return $"Egyenleg: {EzresTagolas(celSzamla.Egyenleg.ToString())} Ft";
         }
+
     }
 }
+
+    

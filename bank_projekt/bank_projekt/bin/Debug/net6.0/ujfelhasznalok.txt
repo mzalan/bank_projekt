@@ -1,0 +1,2 @@
+nev;lejaratidatum;kartyaszam;cvv;egyenleg;pin;kartyatipus
+Nagy Miksa;2025-12-30;7919565669841551;828;0;3944

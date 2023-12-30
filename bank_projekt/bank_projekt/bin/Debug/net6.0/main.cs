@@ -1,6 +1,9 @@
 ﻿using Ugyfelek;
 
+Random r = new Random();
+
 Fgvk.FajlOlvas();
+
 
 string valasztas;
 do
@@ -188,17 +191,60 @@ void BankjegyBeadas(string message, Ugyfel celUgyfel)
 
 void Utalas()
     {
-    Ugyfel celUgyfel = KartyaAdatok();
-    BankjegyBeadas("Adatok elfogadva!\n", celUgyfel);
-}
+        Ugyfel celUgyfel = KartyaAdatok();
+        BankjegyBeadas("Adatok elfogadva!\n", celUgyfel);
+    }
+
+string ujnev;
+string ujlejaratidatum;
+string ujkartyaszam;
+int ujCVV;
+int ujegyenleg = 0;
+int ujPIN;
+
 
 
 if (valasztas == "2")
 {
     Console.Clear();
 
-    string ujnev;
 
-    Console.Write("Üdvözöljük! Kérjük adja meg a nevét: ");
+    Console.Write("Üdvözöljük!\n");
+    Console.Write("Kérjük adja meg a nevét: ");
     ujnev = Console.ReadLine();
+    Console.Clear();
+
+    int ujkartyaszamresz1 = r.Next(1000, 9998 +1);
+    int ujkartyaszamresz2 = r.Next(1000, 9998 +1);
+    int ujkartyaszamresz3 = r.Next(1000, 9998 +1);
+    int ujkartyaszamresz4 = r.Next(1000, 9998 +1);
+
+    ujkartyaszam = $"{ujkartyaszamresz1}{ujkartyaszamresz2}{ujkartyaszamresz3}{ujkartyaszamresz4}";
+    Console.Write($"Az Ön bankkártyaszáma: {ujkartyaszam}\n");
+
+    ujCVV = r.Next(100, 998 + 1);
+    Console.Write($"Az Ön CVV kódja: {ujCVV}\n");
+
+    ujPIN = r.Next(1000, 9998 +1);
+    Console.Write($"Az Ön PIN kódja: {ujPIN}\n");
+
+    DateTime jelenlegi = DateTime.Now;
+    int lejaratiev = jelenlegi.Year+2;
+    ujlejaratidatum = jelenlegi.ToString($"{lejaratiev}-MM-dd");
+    Console.WriteLine("Kártyájának lejárati ideje: " + ujlejaratidatum);
+
+
+
+
+    BackPrompt();
+    FajlIras();
+
+}
+
+void FajlIras()
+{
+    StreamWriter sw = new StreamWriter("ujfelhasznalok.txt");
+    sw.WriteLine("nev;lejaratidatum;kartyaszam;cvv;egyenleg;pin;kartyatipus");
+    sw.WriteLine($"{ujnev};{ujlejaratidatum};{ujkartyaszam};{ujCVV};{ujegyenleg};{ujPIN}");
+    sw.Close();
 }
