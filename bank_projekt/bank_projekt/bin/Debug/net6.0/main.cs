@@ -82,6 +82,11 @@ if (valasztas == "1")
             {
                 
             }
+
+            else
+            {
+                Console.WriteLine("Hibás sorszámot adott meg!");
+            }
         }
         while (valasztas2 != "");
     }
@@ -90,7 +95,14 @@ if (valasztas == "1")
     {
         Console.WriteLine("\nHagyja üresen a beviteli mezőt a kilépéshez..");
         return Console.ReadLine();
-}
+    }
+
+    string BackPrompt2()
+    {
+        Console.WriteLine("Lépjen be és tekintse meg új adatait!");
+        return Console.ReadLine();
+    }
+
     void Penzfelvetel()
     {
         string kiiras = "";
@@ -201,6 +213,45 @@ string ujkartyaszam;
 int ujCVV;
 int ujegyenleg = 0;
 int ujPIN;
+string ujtipus;
+
+string tipusvalasztas;
+
+//void TipusValasztas()
+//{
+
+    //do
+    //{
+    //    Console.Clear();
+    //    Console.WriteLine("Kérjük válassza ki a kártya típusát!");
+    //    Console.WriteLine("1.Bankszámla felnőtt részére");
+    //    Console.WriteLine("2.Bankszámla diákigazolvánnyal rendelkező tanuló részére\n");
+    //    Console.Write("Menüpont: ");
+    //    tipusvalasztas = Console.ReadLine();
+
+    //    if (tipusvalasztas == "1")
+    //    {
+    //        Console.Clear();
+
+    //        ujtipus = "felnott";
+    //        tipusvalasztas = BackPrompt2();
+    //    }
+
+    //    else if (tipusvalasztas == "2")
+    //    {
+    //        Console.Clear();
+
+    //        ujtipus = "diak";
+    //        tipusvalasztas = BackPrompt2();
+    //    }
+
+    //    else if (tipusvalasztas != "1" || tipusvalasztas != "2")
+    //    {
+    //        Console.WriteLine("Kérjük a rendelkezésre álló sorszámok közül válasszon!");
+    //    }
+
+    //} while (tipusvalasztas != "");
+//}
 
 
 
@@ -213,38 +264,98 @@ if (valasztas == "2")
     Console.Write("Kérjük adja meg a nevét: ");
     ujnev = Console.ReadLine();
     Console.Clear();
+    //TipusValasztas();
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("Kérjük válassza ki a kártya típusát!");
+        Console.WriteLine("1.Bankszámla felnőtt részére");
+        Console.WriteLine("2.Bankszámla diákigazolvánnyal rendelkező tanuló részére (14-26 éves korig)\n");
+        Console.Write("Menüpont: ");
+        tipusvalasztas = Console.ReadLine();
 
-    int ujkartyaszamresz1 = r.Next(1000, 9998 +1);
-    int ujkartyaszamresz2 = r.Next(1000, 9998 +1);
-    int ujkartyaszamresz3 = r.Next(1000, 9998 +1);
-    int ujkartyaszamresz4 = r.Next(1000, 9998 +1);
+        if (tipusvalasztas == "1")
+        {
+            Console.Clear();
+
+            ujtipus = "felnott";
+            tipusvalasztas = BackPrompt2();
+        }
+
+        else if (tipusvalasztas == "2")
+        {
+            Console.Clear();
+
+            ujtipus = "diak";
+            Console.Write("Kérjük adja meg az életkorát: ");
+            int eletkor = int.Parse(Console.ReadLine());
+            if (eletkor < 14)
+            {
+                Console.Clear();
+            }
+            else if (eletkor > 26)
+            {
+                Console.Clear();
+            }
+            else if (eletkor > 14 || eletkor < 27)
+            {
+                tipusvalasztas = BackPrompt2();
+            }
+
+        }
+
+        else if (tipusvalasztas != "1" || tipusvalasztas != "2")
+        {
+            Console.WriteLine("Kérjük a rendelkezésre álló sorszámok közül válasszon!");
+        }
+
+    } while (tipusvalasztas != "");
+
+
+
+    int ujkartyaszamresz1 = r.Next(1000, 9998 + 1);
+    int ujkartyaszamresz2 = r.Next(1000, 9998 + 1);
+    int ujkartyaszamresz3 = r.Next(1000, 9998 + 1);
+    int ujkartyaszamresz4 = r.Next(1000, 9998 + 1);
 
     ujkartyaszam = $"{ujkartyaszamresz1}{ujkartyaszamresz2}{ujkartyaszamresz3}{ujkartyaszamresz4}";
     Console.Write($"Az Ön bankkártyaszáma: {ujkartyaszam}\n");
 
     ujCVV = r.Next(100, 998 + 1);
-    Console.Write($"Az Ön CVV kódja: {ujCVV}\n");
+    Console.Write($"Az Ön új CVV kódja: {ujCVV}\n");
 
-    ujPIN = r.Next(1000, 9998 +1);
-    Console.Write($"Az Ön PIN kódja: {ujPIN}\n");
+    ujPIN = r.Next(1000, 9998 + 1);
+    Console.Write($"Az Ön új PIN kódja: {ujPIN}\n");
 
     DateTime jelenlegi = DateTime.Now;
-    int lejaratiev = jelenlegi.Year+2;
+    int lejaratiev = jelenlegi.Year + 5;
     ujlejaratidatum = jelenlegi.ToString($"{lejaratiev}-MM-dd");
     Console.WriteLine("Kártyájának lejárati ideje: " + ujlejaratidatum);
 
 
 
+    void FajlIras()
+    {
+        StreamWriter sw = new StreamWriter("ujfelhasznalok.txt");
+        sw.WriteLine("nev;" +
+                    "lejaratidatum;" +
+                    "kartyaszam;" +
+                    "cvv;" +
+                    "egyenleg;" +
+                    "pin");
+
+        sw.WriteLine($"{ujnev};" +
+                    $"{ujlejaratidatum};" +
+                    $"{ujkartyaszam};" +
+                    $"{ujCVV};" +
+                    $"{ujegyenleg};" +
+                    $"{ujPIN}");
+
+                    
+        sw.Close();
+    }
 
     BackPrompt();
     FajlIras();
 
-}
-
-void FajlIras()
-{
-    StreamWriter sw = new StreamWriter("ujfelhasznalok.txt");
-    sw.WriteLine("nev;lejaratidatum;kartyaszam;cvv;egyenleg;pin;kartyatipus");
-    sw.WriteLine($"{ujnev};{ujlejaratidatum};{ujkartyaszam};{ujCVV};{ujegyenleg};{ujPIN}");
-    sw.Close();
 }
