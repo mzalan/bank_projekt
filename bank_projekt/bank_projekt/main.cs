@@ -208,16 +208,6 @@ void Utalas()
         BankjegyBeadas("Adatok elfogadva!\n", celUgyfel);
     }
 
-string ujnev;
-string ujlejaratidatum;
-string ujkartyaszam;
-int ujCVV;
-int ujegyenleg = 0;
-int ujPIN;
-string ujtipus;
-
-string tipusvalasztas;
-
 void KilistazasModositas()
 {
     string valasztas = "";
@@ -240,11 +230,20 @@ void KilistazasModositas()
     Fgvk.AdatKilistazas(valasztas);
 }
 
+string ujnev;
+string ujlejaratidatum;
+string ujkartyaszam;
+int ujCVV;
+int ujegyenleg = 0;
+int ujPIN;
+string ujtipus;
+
+string tipusvalasztas;
+
+
 if (valasztas == "2")
 {
     Console.Clear();
-
-
     Console.Write("Üdvözöljük!\n");
     Console.Write("Kérjük adja meg a nevét: ");
     ujnev = Console.ReadLine();

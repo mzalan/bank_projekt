@@ -208,52 +208,6 @@ void Utalas()
         BankjegyBeadas("Adatok elfogadva!\n", celUgyfel);
     }
 
-string ujnev;
-string ujlejaratidatum;
-string ujkartyaszam;
-int ujCVV;
-int ujegyenleg = 0;
-int ujPIN;
-string ujtipus;
-
-string tipusvalasztas;
-
-//void TipusValasztas()
-//{
-
-    //do
-    //{
-    //    Console.Clear();
-    //    Console.WriteLine("Kérjük válassza ki a kártya típusát!");
-    //    Console.WriteLine("1.Bankszámla felnőtt részére");
-    //    Console.WriteLine("2.Bankszámla diákigazolvánnyal rendelkező tanuló részére\n");
-    //    Console.Write("Menüpont: ");
-    //    tipusvalasztas = Console.ReadLine();
-
-    //    if (tipusvalasztas == "1")
-    //    {
-    //        Console.Clear();
-
-    //        ujtipus = "felnott";
-    //        tipusvalasztas = BackPrompt2();
-    //    }
-
-    //    else if (tipusvalasztas == "2")
-    //    {
-    //        Console.Clear();
-
-    //        ujtipus = "diak";
-    //        tipusvalasztas = BackPrompt2();
-    //    }
-
-    //    else if (tipusvalasztas != "1" || tipusvalasztas != "2")
-    //    {
-    //        Console.WriteLine("Kérjük a rendelkezésre álló sorszámok közül válasszon!");
-    //    }
-
-    //} while (tipusvalasztas != "");
-//}
-
 void KilistazasModositas()
 {
     string valasztas = "";
@@ -276,16 +230,25 @@ void KilistazasModositas()
     Fgvk.AdatKilistazas(valasztas);
 }
 
+string ujnev;
+string ujlejaratidatum;
+string ujkartyaszam;
+int ujCVV;
+int ujegyenleg = 0;
+int ujPIN;
+string ujtipus;
+
+string tipusvalasztas;
+
+
 if (valasztas == "2")
 {
     Console.Clear();
-
-
     Console.Write("Üdvözöljük!\n");
     Console.Write("Kérjük adja meg a nevét: ");
     ujnev = Console.ReadLine();
     Console.Clear();
-    //TipusValasztas();
+
     do
     {
         Console.Clear();

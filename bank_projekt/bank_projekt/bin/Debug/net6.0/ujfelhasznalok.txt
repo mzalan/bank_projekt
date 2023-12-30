@@ -1,2 +1,2 @@
 nev;lejaratidatum;kartyaszam;cvv;egyenleg;pin
-Nagy Béla;2028-12-30;8405778260108591;538;0;1948
+Nagy Gabi;2028-12-30;1674617194155840;701;0;7109
