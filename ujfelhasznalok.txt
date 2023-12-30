@@ -1,0 +1,2 @@
+nev;lejaratidatum;kartyaszam;cvv;egyenleg;pin
+Nagy Béla;2028-12-30;6356689729782941;872;0;4336

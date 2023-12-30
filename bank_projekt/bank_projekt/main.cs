@@ -14,7 +14,7 @@ do
     Console.WriteLine("2. Új fiók nyitása\n");
     Console.Write("Menüpont: ");
     valasztas = Console.ReadLine();
-}while(valasztas.Length != 1 && (valasztas != "1" || valasztas != "2" ));
+}while (valasztas != "1" && valasztas != "2" );
 
 
 if (valasztas == "1")
@@ -57,7 +57,8 @@ if (valasztas == "1")
 
             if (valasztas2 == "1")
             {
-
+                KilistazasModositas();
+                valasztas2 = BackPrompt();
             }
 
             else if (valasztas2 == "2")
@@ -217,7 +218,27 @@ string ujtipus;
 
 string tipusvalasztas;
 
+void KilistazasModositas()
+{
+    string valasztas = "";
+    do
+    {
+        if (valasztas != "1" || valasztas != "6" || valasztas != "7" || valasztas != "")
+            Console.WriteLine("A megadott menüpont nem módosítható");
+        Console.Clear();
+        Console.WriteLine($"1. Név: {Fgvk.bejelentkezettUgyfel.Nev}\t(módosítható)");
+        Console.WriteLine($"2. Kártyaszám: {Fgvk.bejelentkezettUgyfel.Kartyaszam}");
+        Console.WriteLine($"3. Lejárati dátum: {Fgvk.bejelentkezettUgyfel.LejaratiDatum}");
+        Console.WriteLine($"4. CVV: {Fgvk.bejelentkezettUgyfel.CVV}");
+        Console.WriteLine($"5. Egyenleg: {Fgvk.EzresTagolas(Fgvk.bejelentkezettUgyfel.Egyenleg.ToString())} Ft");
+        Console.WriteLine($"6. PIN: {Fgvk.bejelentkezettUgyfel.PIN}\t(módosítható)");
+        Console.WriteLine($"7. Kártyatípus: {Fgvk.bejelentkezettUgyfel.Kartyatipus}\t(módosítható)");
 
+        Console.Write("Módosítani kívánt menüpont: ");
+        valasztas = Console.ReadLine();
+    } while (valasztas != "1" && valasztas != "6" && valasztas != "7");
+    Fgvk.AdatKilistazas(valasztas);
+}
 
 if (valasztas == "2")
 {
