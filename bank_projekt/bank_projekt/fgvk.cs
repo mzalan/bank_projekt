@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Ugyfelek
     public static class Fgvk
     {
         private static List<Ugyfel> ugyfelek = new List<Ugyfel>();
-        private static Ugyfel bejelentkezettUgyfel;
+        public static Ugyfel bejelentkezettUgyfel;
         private static int[] cimletek = { 20000, 10000, 5000, 2000, 1000 };
         public static void FajlOlvas()
         {
@@ -174,6 +175,112 @@ namespace Ugyfelek
 
             FajlIr();
             return $"Egyenleg: {EzresTagolas(celSzamla.Egyenleg.ToString())} Ft";
+        }
+        public static void AdatKilistazas(string valasztas)
+        {
+            if (valasztas == "1")
+                NevModosit();
+            if (valasztas == "6")
+                PINModosit();
+            if (valasztas == "7")
+                KartyatipusModosit();
+        }
+        public static void NevModosit()
+        {
+            string ujNev = "a";
+            string ujNevIsm = "a";
+            do
+            {
+                Console.Clear();
+                if (ujNev != ujNevIsm)
+                    Console.WriteLine("A megadott nevek nem egyeznek");
+                Console.Write("Adja meg a kívánt nevet: ");
+                ujNev = Console.ReadLine();
+                Console.Write("Adja meg a nevet ismét: ");
+                ujNevIsm = Console.ReadLine();
+            } while (ujNev != ujNevIsm);
+
+            bejelentkezettUgyfel.Nev = ujNev;
+            FajlIr();
+
+            Console.WriteLine("A név módosítása sikeres");
+        }
+        public static void PINModosit()
+        {
+            string ujPIN = "1";
+            string ujPINIsm = "1";
+            bool elso = true;
+            do
+            {
+                Console.Clear();
+                if (!elso)
+                {
+                    if (ujPIN != ujPINIsm)
+                        Console.WriteLine("A megadott PIN-kódok nem egyeznek");
+                    if (ujPIN.Length != 4 || !LetezoPINCheck(ujPIN))
+                        Console.WriteLine("A megadott PIN-kód nem megfelelő");
+                }
+                Console.Write("Adja meg a kívánt PIN-kódot: ");
+                ujPIN = Console.ReadLine();
+                Console.Write("Adja meg a PIN-kódot ismét: ");
+                ujPINIsm = Console.ReadLine();
+                elso = false;
+            } while (ujPIN != ujPINIsm || ujPIN.Length != 4 || !LetezoPINCheck(ujPIN));
+
+            bejelentkezettUgyfel.PIN = ujPIN;
+            FajlIr();
+
+            Console.WriteLine("A PIN-kód módosítása sikeres");
+        }
+        public static void KartyatipusModosit()
+        {
+            string ujTipus = "a";
+            string ujTipusIsm = "a";
+            bool elso = true;
+            do
+            {
+                Console.Clear();
+                if (!elso)
+                {
+                    if (ujTipus != ujTipusIsm)
+                        Console.WriteLine("A megadott bankok nem egyeznek");
+                    if (!LetezoBankCheck(ujTipus))
+                        Console.WriteLine("A megadott bank nem létezik");
+                }
+                Console.Write("Adja meg a kívánt bankot: ");
+                ujTipus = Console.ReadLine();
+                Console.Write("Adja meg a bankot ismét: ");
+                ujTipusIsm = Console.ReadLine();
+                elso = false;
+            } while (ujTipus != ujTipusIsm || !LetezoBankCheck(ujTipus));
+
+            bejelentkezettUgyfel.Kartyatipus = ujTipus;
+            FajlIr();
+
+            Console.WriteLine("A kártyatípus módosítása sikeres");
+        }
+        public static bool LetezoPINCheck(string megadottPIN)
+        {
+            foreach (var ugyfel in ugyfelek)
+            {
+                if (ugyfel.PIN == megadottPIN)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public static bool LetezoBankCheck(string megadottBank)
+        {
+            string[] bankok = { "Erste", "Raiffeisen", "Takarékbank", "MKB", "Cofidis", "OTP", "CiBBank" };
+            foreach (var bank in bankok)
+            {
+                if (bank == megadottBank)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }
