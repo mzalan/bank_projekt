@@ -292,7 +292,7 @@ namespace Ugyfelek
                 string[] reszek = megadottNev.Split(' ');
                 foreach (string resz in reszek)
                 {
-                    if (Char.isUpper(resz, 0))
+                    if (Char.IsUpper(resz, 0))
                         db++;
                 }
                 if (db >= 2)
