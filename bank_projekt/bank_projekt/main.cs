@@ -23,19 +23,21 @@ do
 if (valasztas == "1")
 {
     Console.Clear();
-    Console.WriteLine("Üdvözöljük!\nKérjük adja meg a PIN-kódját.");
+    Console.WriteLine("Üdvözöljük!\nKérjük adja meg a bankkártyaszámát és a PIN-kódját.");
 
+    string beirtKartyaszam;
     string beirtPin;
     int probalkozasok = 3;
-    bool helyes = false;
     do
     {
+        Console.Write("Bankkártyaszám: ");
+        beirtKartyaszam = Console.ReadLine();
         Console.Write("PIN-kód: ");
         beirtPin = Console.ReadLine();
-        if (!Fgvk.CheckPin(beirtPin, probalkozasok))
+        if (!Fgvk.CheckFelhasznalo(beirtPin, beirtKartyaszam, probalkozasok))
             probalkozasok--;
-            Console.WriteLine($"Helytelen PIN-kód! {probalkozasok} lehetősége maradt.");
-    } while (!Fgvk.CheckPin(beirtPin, probalkozasok) && probalkozasok != 0);
+            Console.WriteLine($"Helytelen adatok! {probalkozasok} lehetősége maradt.");
+    } while (!Fgvk.CheckFelhasznalo(beirtPin, beirtKartyaszam, probalkozasok) && probalkozasok != 0);
 
     if (probalkozasok > 0)
     {
@@ -82,17 +84,12 @@ if (valasztas == "1")
                 valasztas2 = BackPrompt();
             }
 
-            else if (valasztas2 == "5")
-            {
-                
-            }
-
             else
             {
                 Console.WriteLine("Hibás sorszámot adott meg!");
             }
         }
-        while (valasztas2 != "");
+        while (valasztas2 != "5");
     }
 }
     string BackPrompt()
@@ -248,12 +245,18 @@ if (valasztas == "2")
 {
     Console.Clear();
     Console.Write("Üdvözöljük!\n");
-    Console.Write("Kérjük adja meg a nevét: ");
-    ujnev = Console.ReadLine();
-    Console.Clear();
+    do
+    {
+        Console.Write("Kérjük adja meg a nevét: ");
+        ujnev = Console.ReadLine();
+    } while (!Fgvk.NevCheck(ujnev));
 
-    Console.Write("Kérjük adja meg a kártya típusát: ");
-    ujtipus = Console.ReadLine();
+
+    do
+    {
+        Console.Write("Kérjük adja meg a kártya típusát: ");
+        ujtipus = Console.ReadLine();
+    } while (!Fgvk.LetezoBankCheck(ujtipus));
 
 
     do
@@ -301,13 +304,15 @@ if (valasztas == "2")
     } while (ujbirtokos != "");
 
 
+    do
+    {
+        int ujkartyaszamresz1 = r.Next(1000, 9998 + 1);
+        int ujkartyaszamresz2 = r.Next(1000, 9998 + 1);
+        int ujkartyaszamresz3 = r.Next(1000, 9998 + 1);
+        int ujkartyaszamresz4 = r.Next(1000, 9998 + 1);
 
-    int ujkartyaszamresz1 = r.Next(1000, 9998 + 1);
-    int ujkartyaszamresz2 = r.Next(1000, 9998 + 1);
-    int ujkartyaszamresz3 = r.Next(1000, 9998 + 1);
-    int ujkartyaszamresz4 = r.Next(1000, 9998 + 1);
-
-    ujkartyaszam = $"{ujkartyaszamresz1}{ujkartyaszamresz2}{ujkartyaszamresz3}{ujkartyaszamresz4}";
+        ujkartyaszam = $"{ujkartyaszamresz1}{ujkartyaszamresz2}{ujkartyaszamresz3}{ujkartyaszamresz4}";
+    } while (!Fgvk.LetezoKartyaszamCheck(ujkartyaszam));
     Console.Write($"Az Ön bankkártyaszáma: {ujkartyaszam}\n");
 
     ujCVV = r.Next(100, 998 + 1);

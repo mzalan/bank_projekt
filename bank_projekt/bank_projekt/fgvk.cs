@@ -23,13 +23,13 @@ namespace Ugyfelek
             }
             sr.Close();
         }
-        public static bool CheckPin(string beirtPin, int probalkozasok)
+        public static bool CheckFelhasznalo(string beirtPin, string beirtKartyaszam, int probalkozasok)
         {
-            if (beirtPin.Length == 4)
+            if (beirtPin.Length == 4 && beirtKartyaszam.Length == 16)
             {
                 foreach (var ugyfel in ugyfelek)
                 {
-                    if (ugyfel.PIN == beirtPin)
+                    if (ugyfel.Kartyaszam == beirtKartyaszam && ugyfel.PIN == beirtPin)
                     {
                         bejelentkezettUgyfel = ugyfel;
                         return true;
@@ -113,6 +113,7 @@ namespace Ugyfelek
                 levagando += currentDir[currentDir.Length - i - 1];
             }
             string fajlUt = currentDir.Replace(ReverseString(levagando), "") + @"\adatok.txt";
+
 
             List<string> sorok = new List<string> { "nev;lejaratidatum;kartyaszam;cvv;egyenleg;pin;kartyatipus" };
             for (int i = 0; i < ugyfelek.Count; i++)
@@ -219,7 +220,7 @@ namespace Ugyfelek
                 {
                     if (ujPIN != ujPINIsm)
                         Console.WriteLine("A megadott PIN-kódok nem egyeznek");
-                    if (ujPIN.Length != 4 || !LetezoPINCheck(ujPIN))
+                    if (ujPIN.Length != 4)
                         Console.WriteLine("A megadott PIN-kód nem megfelelő");
                 }
                 Console.Write("Adja meg a kívánt PIN-kódot: ");
@@ -227,7 +228,7 @@ namespace Ugyfelek
                 Console.Write("Adja meg a PIN-kódot ismét: ");
                 ujPINIsm = Console.ReadLine();
                 elso = false;
-            } while (ujPIN != ujPINIsm || ujPIN.Length != 4 || !LetezoPINCheck(ujPIN));
+            } while (ujPIN != ujPINIsm || ujPIN.Length != 4);
 
             bejelentkezettUgyfel.PIN = ujPIN;
             FajlIr();
@@ -261,17 +262,6 @@ namespace Ugyfelek
 
             Console.WriteLine("A kártyatípus módosítása sikeres");
         }
-        public static bool LetezoPINCheck(string megadottPIN)
-        {
-            foreach (var ugyfel in ugyfelek)
-            {
-                if (ugyfel.PIN == megadottPIN)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
         public static bool LetezoBankCheck(string megadottBank)
         {
             string[] bankok = { "Erste", "Raiffeisen", "Takarékbank", "MKB", "Cofidis", "OTP", "CiBBank" };
@@ -300,7 +290,15 @@ namespace Ugyfelek
             }
             return false;
         }
-
+        public static bool LetezoKartyaszamCheck(string megadottKartyaszam)
+        {
+            foreach (Ugyfel ugyfel in ugyfelek)
+            {
+                if (ugyfel.Kartyaszam == megadottKartyaszam)
+                    return false;
+            }
+            return true;
+        }
     }
 }
 
