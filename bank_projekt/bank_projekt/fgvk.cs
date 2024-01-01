@@ -194,11 +194,13 @@ namespace Ugyfelek
                 Console.Clear();
                 if (ujNev != ujNevIsm)
                     Console.WriteLine("A megadott nevek nem egyeznek");
+                if (!NevCheck(ujNev))
+                    Console.WriteLine("A névnek tartalmaznia kell min. 2 nagybetűt és min. 1 szóközt");
                 Console.Write("Adja meg a kívánt nevet: ");
                 ujNev = Console.ReadLine();
                 Console.Write("Adja meg a nevet ismét: ");
                 ujNevIsm = Console.ReadLine();
-            } while (ujNev != ujNevIsm);
+            } while (ujNev != ujNevIsm || !NevCheck(ujNev));
 
             bejelentkezettUgyfel.Nev = ujNev;
             FajlIr();
@@ -279,6 +281,22 @@ namespace Ugyfelek
                 {
                     return true;
                 }
+            }
+            return false;
+        }
+        public static bool NevCheck(string megadottNev)
+        {
+            int db = 0;
+            if (megadottNev.Contains(' '))
+            {
+                string[] reszek = megadottNev.Split(' ');
+                foreach (string resz in reszek)
+                {
+                    if (Char.isUpper(resz, 0))
+                        db++;
+                }
+                if (db >= 2)
+                    return true;
             }
             return false;
         }
