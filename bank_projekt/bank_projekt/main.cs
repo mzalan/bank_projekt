@@ -1,4 +1,7 @@
 ﻿using Ugyfelek;
+using System;
+using System.IO;
+
 
 Random r = new Random();
 
@@ -236,10 +239,10 @@ string ujkartyaszam;
 int ujCVV;
 int ujegyenleg = 0;
 int ujPIN;
+string ujbirtokos;
 string ujtipus;
 
 string tipusvalasztas;
-
 
 if (valasztas == "2")
 {
@@ -249,28 +252,30 @@ if (valasztas == "2")
     ujnev = Console.ReadLine();
     Console.Clear();
 
+    Console.Write("Kérjük adja meg a kártya típusát: ");
+    ujtipus = Console.ReadLine();
+
+
     do
     {
         Console.Clear();
-        Console.WriteLine("Kérjük válassza ki a kártya típusát!");
+        Console.WriteLine("Kérjük válassza ki, ki fogja birtokolni a kártyát!");
         Console.WriteLine("1.Bankszámla felnőtt részére");
         Console.WriteLine("2.Bankszámla diákigazolvánnyal rendelkező tanuló részére (14-26 éves korig)\n");
         Console.Write("Menüpont: ");
-        tipusvalasztas = Console.ReadLine();
+        ujbirtokos = Console.ReadLine();
 
-        if (tipusvalasztas == "1")
+        if (ujbirtokos == "1")
         {
             Console.Clear();
 
-            ujtipus = "felnott";
-            tipusvalasztas = BackPrompt2();
+            ujbirtokos = BackPrompt2();
         }
 
-        else if (tipusvalasztas == "2")
+        else if (ujbirtokos == "2")
         {
             Console.Clear();
 
-            ujtipus = "diak";
             Console.Write("Kérjük adja meg az életkorát: ");
             int eletkor = int.Parse(Console.ReadLine());
             if (eletkor < 14)
@@ -283,17 +288,17 @@ if (valasztas == "2")
             }
             else if (eletkor > 14 || eletkor < 27)
             {
-                tipusvalasztas = BackPrompt2();
+                ujbirtokos = BackPrompt2();
             }
 
         }
 
-        else if (tipusvalasztas != "1" || tipusvalasztas != "2")
+        else if (ujbirtokos != "1" || ujbirtokos != "2")
         {
             Console.WriteLine("Kérjük a rendelkezésre álló sorszámok közül válasszon!");
         }
 
-    } while (tipusvalasztas != "");
+    } while (ujbirtokos != "");
 
 
 
@@ -313,31 +318,41 @@ if (valasztas == "2")
 
     DateTime jelenlegi = DateTime.Now;
     int lejaratiev = jelenlegi.Year + 5;
-    ujlejaratidatum = jelenlegi.ToString($"{lejaratiev}-MM-dd");
+    ujlejaratidatum = jelenlegi.ToString($"{lejaratiev}-M-d");
     Console.WriteLine("Kártyájának lejárati ideje: " + ujlejaratidatum);
 
+    Console.WriteLine($"Kártyájának típusa: {ujtipus}");
 
 
     void FajlIras()
     {
-        StreamWriter sw = new StreamWriter("ujfelhasznalok.txt");
-        sw.WriteLine("nev;" +
-                    "lejaratidatum;" +
-                    "kartyaszam;" +
-                    "cvv;" +
-                    "egyenleg;" +
-                    "pin");
+        string filePath = "adatok.txt";
 
-        sw.WriteLine($"{ujnev};" +
-                    $"{ujlejaratidatum};" +
-                    $"{ujkartyaszam};" +
-                    $"{ujCVV};" +
-                    $"{ujegyenleg};" +
-                    $"{ujPIN}");
+        try
+        {
 
-                    
-        sw.Close();
+            using (StreamWriter sw = File.AppendText(filePath))
+            {
+
+
+                sw.WriteLine($"{ujnev};" +
+                             $"{ujlejaratidatum};" +
+                             $"{ujkartyaszam};" +
+                             $"{ujCVV};" +
+                             $"{ujegyenleg};" +
+                             $"{ujPIN};" +
+                             $"{ujtipus}");
+                             
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Hiba történt: {ex.Message}");
+        }
     }
+
+    
 
     BackPrompt();
     FajlIras();

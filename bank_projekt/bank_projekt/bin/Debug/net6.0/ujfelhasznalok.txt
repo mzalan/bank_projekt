@@ -1,2 +1,2 @@
 nev;lejaratidatum;kartyaszam;cvv;egyenleg;pin
-Nagy Gabi;2028-12-30;1674617194155840;701;0;7109
+Kis Jenő;2029-01-01;7351683247281187;538;0;5878
